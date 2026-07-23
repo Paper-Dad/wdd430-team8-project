@@ -1,6 +1,6 @@
 # wdd430-team8-project
 
-Enrique Ibarra: enriqueic
+Enrique Ibarra
 Benjamin Roberts
 Rodrigo Pacheco
 
@@ -15,3 +15,6 @@ We checked the project board and assigned tasks to each team member. We also dis
 The group started with the landing page, and set what would be structure of the web app.
 at the end of the meeting we set up the next week group leader.
 
+Week 4 milestone:
+Team 8 met together on time with Enrique, Benjamin and Rodrigo present. We reviewed together the typescript code for the database and accepted the merge request. For the next backlog tasks, we assigned: -Review Page, Add Review Page to Benjamin; -Add product form, product listing page to Rodrigo; -Seller page, seller profile page to Enrique. 
+One challenge: Setting up the database in each of our VS Code environments required debugging. One insight: We need to start making documenting our code to coordinate better. One success: the backlog was clearly distributed.
