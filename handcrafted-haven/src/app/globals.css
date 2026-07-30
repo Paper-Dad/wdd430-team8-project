@@ -538,3 +538,366 @@ h3 {
     gap: 1rem;
   }
 }
+
+/*Products Page Styles*/
+
+.products-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.products-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.products-header h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.25rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,
+      minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  overflow: hidden;
+  border: 1px solid #dddddd;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: #eeeeee;
+}
+
+.product-content {
+  padding: 1.25rem;
+}
+
+.product-category {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.product-content h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+}
+
+.product-description {
+  line-height: 1.5;
+}
+
+.product-price {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.product-artisan,
+.product-shop,
+.product-materials {
+  margin: 0.4rem 0;
+}
+
+.in-stock {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.out-of-stock {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.no-products {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .products-page {
+    padding: 1rem;
+  }
+}
+
+/*Artisans Page Styles*/
+
+.artisans-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.artisans-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.artisans-header h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.25rem;
+}
+
+.artisans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.artisan-card {
+  padding: 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  text-align: center;
+}
+
+.artisan-initials {
+  display: flex;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.artisan-card h2 {
+  margin-bottom: 0.4rem;
+}
+
+.artisan-owner {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.artisan-bio {
+  line-height: 1.5;
+}
+
+.artisan-email {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.no-artisans {
+  text-align: center;
+}
+
+/*Artisan Detail Page Styles*/
+
+.artisan-details-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.artisan-profile {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #f4f1eb;
+}
+
+.artisan-profile-initials {
+  display: flex;
+  flex-shrink: 0;
+  width: 110px;
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.artisan-profile h1 {
+  margin: 0.25rem 0;
+  font-size: 2.5rem;
+}
+
+.artisan-profile-name {
+  margin: 0.25rem 0 1rem;
+  font-weight: 600;
+}
+
+.artisan-profile-bio {
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.artisan-contact {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.artisan-products-section {
+  margin-top: 3rem;
+}
+
+.artisan-products-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.artisan-products-heading h2 {
+  margin: 0.25rem 0 0;
+}
+
+.artisan-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 650px) {
+  .artisan-details-page {
+    padding: 1rem;
+  }
+
+  .artisan-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .artisan-products-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/*Product Detail Page Styles*/
+
+.product-details-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.product-details-page>.text-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.product-details-image-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #eeeeee;
+}
+
+.product-details-image {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.product-details-content h1 {
+  margin: 0.5rem 0;
+  font-size: 2.5rem;
+}
+
+.product-details-price {
+  margin: 1rem 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.product-average-rating {
+  margin-bottom: 1.5rem;
+}
+
+.product-details-description {
+  line-height: 1.7;
+}
+
+.product-material-list {
+  margin-top: 1.5rem;
+}
+
+.product-material-list h2 {
+  font-size: 1.2rem;
+}
+
+.product-material-list ul {
+  padding-left: 1.25rem;
+}
+
+.product-artisan-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #f4f1eb;
+}
+
+.product-artisan-section h2 {
+  margin: 0.25rem 0;
+}
+
+.product-artisan-name {
+  font-weight: 600;
+}
+
+.product-artisan-section .button {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.product-reviews-section {
+  margin-top: 3rem;
+}
+
+.product-reviews-section .section-heading {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 750px) {
+  .product-details-page {
+    padding: 1rem;
+  }
+
+  .product-details {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .product-details-image {
+    min-height: 280px;
+  }
+
+  .product-details-content h1 {
+    font-size: 2rem;
+  }
+}
