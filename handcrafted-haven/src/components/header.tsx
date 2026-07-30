@@ -13,13 +13,14 @@ export default function Header() {
                         <li>
                             <Link href="/">Home</Link>
                         </li>
-
                         <li>
                             <Link href="/products">Products</Link>
                         </li>
-
                         <li>
                             <Link href="/artisans">Artisans</Link>
+                        </li>
+                        <li>
+                            <Link href="/reviews">Reviews</Link>
                         </li>
                     </ul>
                 </nav>

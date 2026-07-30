@@ -1,90 +1,95 @@
 import Link from "next/link";
+import Header from "@/components/header";
+import ProductCard from "@/components/ProductCard";
 
-const categories = [
-  {
-    name: "Jewelry",
-    description: "Discover handcrafted pieces made with care.",
-    icon: "◇",
-  },
-  {
-    name: "Home Décor",
-    description: "Add personality and warmth to your living space.",
-    icon: "⌂",
-  },
-  {
-    name: "Textiles",
-    description: "Browse handmade clothing, blankets, and accessories.",
-    icon: "✦",
-  },
-];
+import { getDatabase } from "@/lib/database";
 
-const products = [
-  {
-    id: 1,
-    name: "Hand-Thrown Ceramic Mug",
-    artisan: "Willow Creek Pottery",
-    category: "Home Décor",
-    price: 38,
-    imageClass: "product-image-one",
-  },
-  {
-    id: 2,
-    name: "Sterling Silver Pendant",
-    artisan: "Northern Light Jewelry",
-    category: "Jewelry",
-    price: 72,
-    imageClass: "product-image-two",
-  },
-  {
-    id: 3,
-    name: "Handwoven Wool Scarf",
-    artisan: "Prairie Threadworks",
-    category: "Textiles",
-    price: 55,
-    imageClass: "product-image-three",
-  },
-];
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+interface FeaturedProduct {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  images: string[];
+  inventory: number;
+  categoryName: string;
+  artisanName: string;
+  shopName: string;
+}
+
+async function getFeaturedProducts(): Promise<FeaturedProduct[]> {
+  const database = await getDatabase();
+
+  const products = await database
+    .collection("products")
+    .aggregate([
+      {
+        $lookup: {
+          from: "categories",
+          localField: "categoryId",
+          foreignField: "_id",
+          as: "category",
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "artisanId",
+          foreignField: "_id",
+          as: "artisan",
+        },
+      },
+      {
+        $unwind: {
+          path: "$category",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $unwind: {
+          path: "$artisan",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $limit: 3,
+      },
+    ])
+    .toArray();
+
+  return products.map((product) => ({
+    _id: product._id.toString(),
+    name: product.name ?? "Unnamed product",
+    description: product.description ?? "",
+    price: product.price ?? 0,
+    images: Array.isArray(product.images) ? product.images : [],
+    inventory: product.inventory ?? 0,
+    categoryName: product.category?.name ?? "Uncategorized",
+    artisanName:
+      [product.artisan?.firstName, product.artisan?.lastName]
+        .filter(Boolean)
+        .join(" ") || "Unknown artisan",
+    shopName: product.artisan?.shopName ?? "",
+  }));
+}
+
+export default async function Home() {
+  const products = await getFeaturedProducts();
   return (
     <>
-      <header className="site-header">
-        <div className="container navigation">
-          <Link href="/" className="logo">
-            Handcrafted Haven
-          </Link>
-
-          <nav aria-label="Main navigation">
-            <ul className="nav-links">
-              <li>
-                <Link href="/products">Shop</Link>
-              </li>
-              <li>
-                <Link href="/sellers">Artisans</Link>
-              </li>
-              <li>
-                <Link href="/about">Our Story</Link>
-              </li>
-            </ul>
-          </nav>
-
-          <div className="account-links">
-            <Link href="/login" className="text-link">
-              Sign In
-            </Link>
-            <Link href="/register" className="button button-small">
-              Join
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main>
         <section className="hero">
           <div className="container hero-content">
-            <p className="eyebrow">Made by hand. Chosen with purpose.</p>
+            <p className="eyebrow">
+              Made by hand. Chosen with purpose.
+            </p>
 
-            <h1>Discover extraordinary creations from independent artisans.</h1>
+            <h1>
+              Discover extraordinary creations from independent artisans.
+            </h1>
 
             <p className="hero-description">
               Explore unique handcrafted products, support talented creators,
@@ -96,43 +101,9 @@ export default function Home() {
                 Browse Products
               </Link>
 
-              <Link href="/register" className="button button-secondary">
-                Become a Seller
+              <Link href="/artisans" className="button button-secondary">
+                Meet the Artisans
               </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="section" aria-labelledby="categories-heading">
-          <div className="container">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">Shop by interest</p>
-                <h2 id="categories-heading">Explore handcrafted categories</h2>
-              </div>
-
-              <Link href="/products" className="text-link">
-                View all products →
-              </Link>
-            </div>
-
-            <div className="category-grid">
-              {categories.map((category) => (
-                <article className="category-card" key={category.name}>
-                  <span className="category-icon" aria-hidden="true">
-                    {category.icon}
-                  </span>
-                  <h3>{category.name}</h3>
-                  <p>{category.description}</p>
-                  <Link
-                    href={`/products?category=${encodeURIComponent(
-                      category.name,
-                    )}`}
-                  >
-                    Explore category →
-                  </Link>
-                </article>
-              ))}
             </div>
           </div>
         </section>
@@ -145,7 +116,9 @@ export default function Home() {
             <div className="section-heading">
               <div>
                 <p className="eyebrow">Made with care</p>
-                <h2 id="featured-heading">Featured creations</h2>
+                <h2 id="featured-heading">
+                  Featured creations
+                </h2>
               </div>
 
               <Link href="/products" className="text-link">
@@ -155,46 +128,57 @@ export default function Home() {
 
             <div className="product-grid">
               {products.map((product) => (
-                <article className="product-card" key={product.id}>
-                  <div
-                    className={`product-image ${product.imageClass}`}
-                    role="img"
-                    aria-label={`Placeholder image for ${product.name}`}
-                  />
-
-                  <div className="product-details">
-                    <p className="product-category">{product.category}</p>
-                    <h3>{product.name}</h3>
-                    <p className="artisan-name">By {product.artisan}</p>
-
-                    <div className="product-footer">
-                      <strong>${product.price.toFixed(2)}</strong>
-                      <Link href={`/products/${product.id}`}>
-                        View product
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                />
               ))}
             </div>
+            
           </div>
         </section>
 
         <section className="artisan-section">
           <div className="container artisan-content">
             <div>
-              <p className="eyebrow">Share your craftsmanship</p>
-              <h2>Turn your creative passion into a thriving storefront.</h2>
+              <p className="eyebrow">
+                Share your craftsmanship
+              </p>
+
+              <h2>
+                Turn your creative passion into a thriving storefront.
+              </h2>
+
               <p>
-                Create a seller profile, tell your story, and introduce your
-                handcrafted work to customers who value originality and
-                thoughtful craftsmanship.
+                Create a seller profile, tell your story, and introduce
+                your handcrafted work to customers who value originality
+                and thoughtful craftsmanship.
               </p>
             </div>
 
-            <Link href="/register" className="button">
-              Open Your Shop
+            <Link href="/artisans" className="button">
+              View Our Artisans
             </Link>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">
+                  Customer experiences
+                </p>
+
+                <h2>
+                  See what shoppers are saying
+                </h2>
+              </div>
+
+              <Link href="/reviews" className="text-link">
+                Read all reviews →
+              </Link>
+            </div>
           </div>
         </section>
       </main>
@@ -205,22 +189,28 @@ export default function Home() {
             <Link href="/" className="logo footer-logo">
               Handcrafted Haven
             </Link>
-            <p>Connecting thoughtful customers with talented creators.</p>
+
+            <p>
+              Connecting thoughtful customers with talented creators.
+            </p>
           </div>
 
           <nav aria-label="Footer navigation">
             <ul className="footer-links">
               <li>
-                <Link href="/products">Shop</Link>
+                <Link href="/">Home</Link>
               </li>
+
               <li>
-                <Link href="/sellers">Artisans</Link>
+                <Link href="/products">Products</Link>
               </li>
+
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/artisans">Artisans</Link>
               </li>
+
               <li>
-                <Link href="/contact">Contact</Link>
+                <Link href="/reviews">Reviews</Link>
               </li>
             </ul>
           </nav>
