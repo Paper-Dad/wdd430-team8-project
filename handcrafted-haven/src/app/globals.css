@@ -436,19 +436,18 @@ h3 {
 /*Reviews Page Styles*/
 
 .reviews-page {
-  max-width: 1200px;
+  max-width: var(--maximum-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .reviews-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
 .reviews-header h1 {
   margin-bottom: 0.5rem;
-  font-size: 2.25rem;
 }
 
 .reviews-grid {
@@ -459,10 +458,10 @@ h3 {
 
 .review-card {
   padding: 1.5rem;
-  border: 1px solid #d7d7d7;
+  border: 1px solid var(--border);
   border-radius: 0.75rem;
-  background: white;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .review-card h2 {
@@ -470,31 +469,32 @@ h3 {
   font-size: 1.25rem;
 }
 
+.review-card p {
+  color: var(--text-muted);
+}
+
 .review-card time {
   display: block;
   margin-top: 1rem;
   font-size: 0.875rem;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .review-rating {
   font-size: 1.25rem;
   letter-spacing: 0.1rem;
+  color: var(--secondary);
 }
 
 .no-reviews {
+  color: var(--text-muted);
   text-align: center;
 }
 
-/*header Styles*/
-
-.site-header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #dddddd;
-}
+/*Header Styles*/
 
 .header-content {
-  max-width: 1200px;
+  max-width: var(--maximum-width);
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
@@ -503,29 +503,11 @@ h3 {
 }
 
 .site-logo {
-  color: #222222;
-  font-size: 1.5rem;
-  font-weight: bold;
+  color: var(--primary);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
   text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #333333;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -542,53 +524,42 @@ h3 {
 /*Products Page Styles*/
 
 .products-page {
-  max-width: 1200px;
+  max-width: var(--maximum-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .products-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
 .products-header h1 {
   margin-bottom: 0.5rem;
-  font-size: 2.25rem;
+}
+
+.products-header p {
+  color: var(--text-muted);
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,
-      minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-}
-
-.product-card {
-  overflow: hidden;
-  border: 1px solid #dddddd;
-  border-radius: 0.75rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
 }
 
 .product-image {
   display: block;
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
-  background-color: #eeeeee;
+  background-color: var(--surface-accent);
+  background-position: center;
+  background-size: cover;
 }
 
 .product-content {
-  padding: 1.25rem;
-}
-
-.product-category {
-  margin: 0 0 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  padding: 1.5rem;
 }
 
 .product-content h2 {
@@ -597,11 +568,13 @@ h3 {
 }
 
 .product-description {
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
 .product-price {
   margin: 1rem 0;
+  color: var(--text);
   font-size: 1.4rem;
   font-weight: bold;
 }
@@ -610,44 +583,51 @@ h3 {
 .product-shop,
 .product-materials {
   margin: 0.4rem 0;
+  color: var(--text-muted);
 }
 
 .in-stock {
   margin-top: 1rem;
+  color: var(--primary);
   font-weight: 600;
 }
 
 .out-of-stock {
   margin-top: 1rem;
+  color: var(--secondary);
   font-weight: 600;
 }
 
 .no-products {
+  color: var(--text-muted);
   text-align: center;
 }
 
 @media (max-width: 600px) {
   .products-page {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 }
 
 /*Artisans Page Styles*/
 
 .artisans-page {
-  max-width: 1200px;
+  max-width: var(--maximum-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .artisans-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
 .artisans-header h1 {
   margin-bottom: 0.5rem;
-  font-size: 2.25rem;
+}
+
+.artisans-header p {
+  color: var(--text-muted);
 }
 
 .artisans-grid {
@@ -658,10 +638,10 @@ h3 {
 
 .artisan-card {
   padding: 1.5rem;
-  border: 1px solid #dddddd;
+  border: 1px solid var(--border);
   border-radius: 0.75rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  background: var(--surface);
+  box-shadow: var(--shadow);
   text-align: center;
 }
 
@@ -673,7 +653,8 @@ h3 {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #eeeeee;
+  background: var(--surface-accent);
+  color: var(--primary);
   font-size: 1.5rem;
   font-weight: 700;
 }
@@ -684,29 +665,33 @@ h3 {
 
 .artisan-owner {
   margin-bottom: 1rem;
+  color: var(--secondary);
   font-weight: 600;
 }
 
 .artisan-bio {
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
 .artisan-email {
   display: inline-block;
   margin-top: 1rem;
+  color: var(--primary);
   font-weight: 600;
 }
 
 .no-artisans {
+  color: var(--text-muted);
   text-align: center;
 }
 
 /*Artisan Detail Page Styles*/
 
 .artisan-details-page {
-  max-width: 1200px;
+  max-width: var(--maximum-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .artisan-profile {
@@ -715,7 +700,7 @@ h3 {
   gap: 2rem;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #f4f1eb;
+  background: var(--surface-accent);
 }
 
 .artisan-profile-initials {
@@ -726,23 +711,26 @@ h3 {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #ffffff;
+  background: var(--surface);
+  color: var(--primary);
   font-size: 2rem;
   font-weight: 700;
+  box-shadow: var(--shadow);
 }
 
 .artisan-profile h1 {
   margin: 0.25rem 0;
-  font-size: 2.5rem;
 }
 
 .artisan-profile-name {
   margin: 0.25rem 0 1rem;
+  color: var(--secondary);
   font-weight: 600;
 }
 
 .artisan-profile-bio {
   max-width: 700px;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
@@ -777,7 +765,7 @@ h3 {
 
 @media (max-width: 650px) {
   .artisan-details-page {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .artisan-profile {
@@ -794,17 +782,20 @@ h3 {
 /*Product Detail Page Styles*/
 
 .product-details-page {
-  max-width: 1200px;
+  max-width: var(--maximum-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
-.product-details-page>.text-link {
+.product-details-page > .text-link {
   display: inline-block;
   margin-bottom: 2rem;
 }
 
-.product-details {
+/* Renamed from .product-details to avoid colliding with the
+   homepage product-card text wrapper of the same name. Update
+   the className in src/app/products/[id]/page.tsx to match. */
+.product-details-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 3rem;
@@ -814,7 +805,8 @@ h3 {
 .product-details-image-container {
   overflow: hidden;
   border-radius: 1rem;
-  background-color: #eeeeee;
+  background: var(--surface-accent);
+  box-shadow: var(--shadow);
 }
 
 .product-details-image {
@@ -826,20 +818,22 @@ h3 {
 
 .product-details-content h1 {
   margin: 0.5rem 0;
-  font-size: 2.5rem;
 }
 
 .product-details-price {
   margin: 1rem 0;
+  color: var(--text);
   font-size: 1.75rem;
   font-weight: 700;
 }
 
 .product-average-rating {
   margin-bottom: 1.5rem;
+  color: var(--secondary);
 }
 
 .product-details-description {
+  color: var(--text-muted);
   line-height: 1.7;
 }
 
@@ -853,13 +847,14 @@ h3 {
 
 .product-material-list ul {
   padding-left: 1.25rem;
+  color: var(--text-muted);
 }
 
 .product-artisan-section {
   margin-top: 3rem;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #f4f1eb;
+  background: var(--surface-accent);
 }
 
 .product-artisan-section h2 {
@@ -867,6 +862,7 @@ h3 {
 }
 
 .product-artisan-name {
+  color: var(--secondary);
   font-weight: 600;
 }
 
@@ -885,10 +881,10 @@ h3 {
 
 @media (max-width: 750px) {
   .product-details-page {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
-  .product-details {
+  .product-details-layout {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -896,8 +892,127 @@ h3 {
   .product-details-image {
     min-height: 280px;
   }
+}
 
-  .product-details-content h1 {
-    font-size: 2rem;
+/*Fix: inner-page headings were inheriting the homepage hero's giant h1 size*/
+
+.products-header h1,
+.reviews-header h1,
+.artisans-header h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+/*New Product Form Page*/
+
+.new-product-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+.new-product-page .products-header {
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--background);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgb(49 92 75 / 15%);
+}
+
+.form-field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.checkbox-field label {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-error {
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgb(200 121 65 / 35%);
+  border-radius: 0.5rem;
+  background: rgb(200 121 65 / 10%);
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.form-actions {
+  margin-top: 0.5rem;
+}
+
+.form-actions .button {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .new-product-page {
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
