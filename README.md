@@ -18,3 +18,7 @@ at the end of the meeting we set up the next week group leader.
 Week 4 milestone:
 Team 8 met together on time with Enrique, Benjamin and Rodrigo present. We reviewed together the typescript code for the database and accepted the merge request. For the next backlog tasks, we assigned: -Review Page, Add Review Page to Benjamin; -Add product form, product listing page to Rodrigo; -Seller page, seller profile page to Enrique. 
 One challenge: Setting up the database in each of our VS Code environments required debugging. One insight: We need to start making documenting our code to coordinate better. One success: the backlog was clearly distributed.
+
+Week 5 Team Project:
+Only Ben Roberts was present for the team meeting.  During that time, Ben Roberts created the review page, product page, home page, artisan page, individual artisan page, and individual product page.  The final tasks of the project are to create the ability for users and "artisans" to log in.  Give the artisans the ability to create new product listings. Create category filtering on products page. and Set up live deploy on hosting site.
+One challenge: a lack of input from all team mates have caused the project to become slightly one sided. 
