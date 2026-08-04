@@ -274,22 +274,31 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.product-image-container {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: var(--surface-accent);
+}
+
 .product-image {
-  min-height: 280px;
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
 }
 
-.product-image-one {
-  background: linear-gradient(135deg, #ceb69f, #6c4a35);
+.product-details-image-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--surface-accent);
+  box-shadow: var(--shadow);
 }
 
-.product-image-two {
-  background: linear-gradient(135deg, #e6ded2, #91847a);
-}
-
-.product-image-three {
-  background: linear-gradient(135deg, #d9a65f, #8b3948);
+.product-details-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
 }
 
 .product-details {
@@ -380,8 +389,20 @@ h3 {
 }
 
 @media (max-width: 850px) {
+
+  .navigation,
+  .header-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding-block: 1rem;
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.25rem;
   }
 
   .category-grid,
@@ -546,16 +567,6 @@ h3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-}
-
-.product-image {
-  display: block;
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  background-color: var(--surface-accent);
-  background-position: center;
-  background-size: cover;
 }
 
 .product-content {
@@ -809,13 +820,6 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.product-details-image {
-  display: block;
-  width: 100%;
-  min-height: 420px;
-  object-fit: cover;
-}
-
 .product-details-content h1 {
   margin: 0.5rem 0;
 }
@@ -888,10 +892,6 @@ h3 {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-
-  .product-details-image {
-    min-height: 280px;
-  }
 }
 
 /*Fix: inner-page headings were inheriting the homepage hero's giant h1 size*/
@@ -899,7 +899,11 @@ h3 {
 .products-header h1,
 .reviews-header h1,
 .artisans-header h1 {
+  max-width: 850px;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
   font-size: clamp(2rem, 4vw, 2.75rem);
+  text-align: center;
 }
 
 /*New Product Form Page*/
@@ -1014,5 +1018,122 @@ h3 {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+}
+
+/*Product Filters*/
+
+.product-filters {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.5fr) 1fr 1fr auto;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.filter-field label {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.filter-field select,
+.filter-field input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  background: var(--background);
+  color: var(--text);
+  font: inherit;
+}
+
+.filter-field select:focus,
+.filter-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgb(49 92 75 / 15%);
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-actions .button {
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-reset {
+  color: var(--primary);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.filter-reset:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.product-result-count {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.filter-message {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.filter-error {
+  border: 1px solid rgb(200 121 65 / 40%);
+  background: rgb(200 121 65 / 10%);
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  .product-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filter-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 550px) {
+  .product-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-actions {
+    grid-column: auto;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filter-actions .button {
+    width: 100%;
+  }
+
+  .filter-reset {
+    text-align: center;
   }
 }
