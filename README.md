@@ -22,3 +22,7 @@ One challenge: Setting up the database in each of our VS Code environments requi
 Week 5 Team Project:
 Only Ben Roberts was present for the team meeting.  During that time, Ben Roberts created the review page, product page, home page, artisan page, individual artisan page, and individual product page.  The final tasks of the project are to create the ability for users and "artisans" to log in.  Give the artisans the ability to create new product listings. Create category filtering on products page. and Set up live deploy on hosting site.
 One challenge: a lack of input from all team mates have caused the project to become slightly one sided. 
+
+Week 6 Team Project:
+Ben and Rodrigo met for the tema meeting.  Rodirgo review Bens code for adding filtering to the prodicts page while Ben reviewed Rodrigos code for adding login, authorization and adding users. After testing that everything worked on the live deploy, Ben and Rodrigo discussed what was left to complete this project.  Rodrigo agreed to add a button to allow artisans to add a product and change the image option to be an upload rather then a URL. Ben agreed to add a review form that and signed in user could use and to fix the formatting of the artisan cards on the artisan page.  Both agreed to meet monday night to finalize the project, make a video and submit the project.
+One challenge: ensuring the project ran smoothly on Vercel.
