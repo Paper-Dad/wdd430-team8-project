@@ -1007,6 +1007,12 @@ h3 {
   width: 100%;
 }
 
+.account-name {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 600px) {
   .new-product-page {
     padding: 2rem 1.25rem 3rem;

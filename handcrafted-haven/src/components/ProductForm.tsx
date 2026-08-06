@@ -10,8 +10,10 @@ interface Category {
 
 export default function ProductForm({
   categories,
+  artisanId,
 }: {
   categories: Category[];
+  artisanId: string;
 }) {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -51,6 +53,7 @@ export default function ProductForm({
           description,
           price: parsedPrice,
           categoryId: categoryId || null,
+          artisanId,
           inventory: Number.isInteger(Number(inventory))
             ? Number(inventory)
             : 0,

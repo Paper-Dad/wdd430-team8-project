@@ -1,5 +1,7 @@
+import { redirect } from "next/navigation";
 import Header from "@/components/header";
 import ProductForm from "@/components/ProductForm";
+import { auth } from "@/auth";
 import { getDatabase } from "@/lib/database";
 
 export const dynamic = "force-dynamic";
@@ -24,12 +26,21 @@ async function getCategories(): Promise<Category[]> {
 }
 
 export default async function NewProductPage() {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
+
+  if (session.user.role !== "artisan") {
+    redirect("/products");
+  }
+
   const categories = await getCategories();
 
   return (
     <>
       <Header />
-
       <main className="new-product-page">
         <header className="products-header">
           <h1>Add a new product</h1>
@@ -37,8 +48,7 @@ export default async function NewProductPage() {
             Share your handcrafted work with the Handcrafted Haven community.
           </p>
         </header>
-
-        <ProductForm categories={categories} />
+        <ProductForm categories={categories} artisanId={session.user.id} />
       </main>
     </>
   );
