@@ -65,8 +65,10 @@ export default async function ArtisansPage() {
                 </p>
 
                 <p className="artisan-bio">{artisan.bio}</p>
-
                 <div className="artisan-card-actions">
+                  <a href={`mailto:${artisan.email}`} className="text-link">
+                    {artisan.email}
+                  </a>
                   <Link href={`/artisans/${artisan._id}`} className="button">
                     View Artisan
                   </Link>
