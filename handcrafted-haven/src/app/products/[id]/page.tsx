@@ -3,6 +3,7 @@ import { ObjectId } from "mongodb";
 import { notFound } from "next/navigation";
 import Header from "@/components/header";
 import { getDatabase } from "@/lib/database";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -189,11 +190,14 @@ export default async function ProductDetailsPage({ params }: ProductPageProps) {
 
         <section className="product-details-layout">
           <div className="product-details-image-container">
-            <img
-              src={mainImage}
-              alt={product.name}
-              className="product-details-image"
-            />
+                      <Image
+                          src={mainImage}
+                          alt={product.name}
+                          width={900}
+                          height={700}
+                          className="product-details-image"
+                          sizes="(max-width: 750px) 100vw, 50vw"
+                      />
           </div>
 
           <div className="product-details-content">

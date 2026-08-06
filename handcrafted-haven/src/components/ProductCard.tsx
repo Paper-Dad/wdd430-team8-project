@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductCardProps {
     product: {
@@ -12,19 +13,29 @@ interface ProductCardProps {
         artisanName: string;
         shopName?: string;
     };
+    eager?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({
+    product,
+    eager = false,
+}: ProductCardProps) {
     const image =
-        product.images[0] ?? "/images/product-placeholder.jpg";
+        product.images?.[0]?.trim() ||
+        "/images/product-placeholder.jpg";
 
     return (
         <article className="product-card">
-            <img
-                src={image}
-                alt={product.name}
-                className="product-image"
-            />
+            <div className="product-image-container">
+                <Image
+                    src={image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 850px) 100vw, 33vw"
+                    className="product-image"
+                    loading={eager ? "eager" : "lazy"}
+                />
+            </div>
 
             <div className="product-content">
                 <p className="product-category">
